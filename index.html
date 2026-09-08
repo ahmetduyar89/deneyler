@@ -117,7 +117,7 @@
 
       <div class="flex items-center gap-3">
         <div class="hidden sm:flex items-center gap-2 bg-amber-100 px-3 py-1.5 rounded-xl border-2 border-ink text-xs font-bold">
-          <span>✨</span> <span>19 Harika Deney Hazır!</span>
+          <span>✨</span> <span>20 Harika Deney Hazır!</span>
         </div>
         <button id="btnSoundWelcome" class="pushable bg-emerald-400 hover:bg-emerald-300 px-4 py-2 text-xs font-bold flex items-center gap-1.5 text-ink">
           <span>🎉</span> <span>Kutlama Yap!</span>
@@ -1890,6 +1890,108 @@
 
       </article>
 
+      <!-- 20. DENEY: BARDAKTAKİ SU DÖKÜLMÜYOR (AÇIK HAVA BASINCI) -->
+      <article class="chunky bg-white overflow-hidden flex flex-col justify-between hover:shadow-[0_12px_0_#182b4d] transition-all">
+        
+        <!-- Kart Görsel Başlığı (İllüstrasyon) -->
+        <div class="bg-gradient-to-br from-teal-100 via-sky-50 to-emerald-100 p-6 border-b-3 border-ink flex items-center justify-center relative min-h-[190px]">
+          <!-- Basınç Rozeti -->
+          <div class="absolute top-3 left-3 bg-white/95 px-2.5 py-0.5 rounded-full border-2 border-ink text-[11px] font-black text-ink shadow-[0_2px_0_#182b4d] flex items-center gap-1">
+            <span>🥛</span> <span>Açık Hava Basıncı (P₀)</span>
+          </div>
+
+          <!-- Kategori Rozeti -->
+          <div class="absolute top-3 right-3 bg-teal-400 text-ink px-2.5 py-0.5 rounded-full border-2 border-ink text-[11px] font-black shadow-[0_2px_0_#182b4d]">
+            4 & 8. Sınıf
+          </div>
+
+          <!-- Deney İllüstrasyonu (SVG Ters Bardak, Karton, Yukarı Oklar, Güvenlik Leğeni) -->
+          <div class="flex flex-col items-center">
+            <svg width="170" height="125" viewBox="0 0 170 125" class="sticker">
+              <!-- Masadaki Güvenlik Leğeni -->
+              <ellipse cx="85" cy="115" rx="60" ry="8" fill="#0d9488" stroke="#182b4d" stroke-width="2" />
+              <ellipse cx="85" cy="114" rx="50" ry="5" fill="#14b8a6" />
+
+              <!-- Ters Çevrilmiş Cam Bardak -->
+              <g transform="translate(85, 52)">
+                <!-- Bardak Camı (Ters Duruyor, taban yukarıda, ağız aşağıda) -->
+                <path d="M -22 -30 L -18 35 L 18 35 L 22 -30 Z" fill="#e0f2fe" stroke="#0284c7" stroke-width="2.2" opacity="0.9" />
+                <!-- İçindeki Mavi Su -->
+                <path d="M -20 -20 L -17 34 L 17 34 L 20 -20 Z" fill="#0284c7" opacity="0.85" />
+                <!-- Bardağın Ağzına Yapışan Sarı Karton -->
+                <rect x="-26" y="34" width="52" height="6" rx="2" fill="#fbbf24" stroke="#182b4d" stroke-width="2" />
+                <!-- Cam Parıltısı -->
+                <line x1="-12" y1="-22" x2="-10" y2="28" stroke="#ffffff" stroke-width="2" stroke-linecap="round" opacity="0.8" />
+              </g>
+
+              <!-- Yukarı Doğru İten Açık Hava Basıncı Okları (P₀) -->
+              <g transform="translate(85, 96)">
+                <!-- Sol Ok -->
+                <line x1="-15" y1="12" x2="-15" y2="0" stroke="#ec4899" stroke-width="2.2" stroke-linecap="round" />
+                <polygon points="-18,2 -15,-4 -12,2" fill="#ec4899" />
+                <!-- Orta Ok -->
+                <line x1="0" y1="15" x2="0" y2="0" stroke="#a855f7" stroke-width="3" stroke-linecap="round" />
+                <polygon points="-4,2 0,-5 4,2" fill="#a855f7" />
+                <!-- Sağ Ok -->
+                <line x1="15" y1="12" x2="15" y2="0" stroke="#ec4899" stroke-width="2.2" stroke-linecap="round" />
+                <polygon points="12,2 15,-4 18,2" fill="#ec4899" />
+              </g>
+
+              <!-- Formül / Bilim Baloncuğu -->
+              <g transform="translate(35, 30)">
+                <rect x="-26" y="-9" width="52" height="18" rx="5" fill="#ffffff" stroke="#182b4d" stroke-width="1.5" />
+                <text x="0" y="4" text-anchor="middle" font-size="8" font-weight="900" fill="#9333ea" font-family="'Baloo 2'">P₀ > P_sıvı</text>
+              </g>
+            </svg>
+            <span class="mt-2 px-3 py-0.5 bg-white/95 border-2 border-ink rounded-full text-[11px] font-black text-ink shadow-[0_2px_0_#182b4d]">
+              💨 101.3 kPa Atmosfer Gücü
+            </span>
+          </div>
+        </div>
+
+        <!-- Kart İçerik -->
+        <div class="p-5 flex-1 flex flex-col justify-between gap-4">
+          <div>
+            <div class="flex items-center gap-2 mb-2">
+              <span class="text-2xl">🥛</span>
+              <h3 class="display text-xl text-ink">Bardaktaki Su Dökülmüyor</h3>
+            </div>
+            
+            <p class="text-xs text-gray-700 leading-relaxed font-semibold mb-3">
+              Su dolu bir bardağın ağzını kartonla kapatıp ters çevirirsen ne olur? Yer çekimine meydan okuyan açık hava basıncını keşfet, bardağı 90° ve 180° çevirerek havanın yukarı doğru itme gücünü gözlemle!
+            </p>
+
+            <!-- Kazanımlar -->
+            <div class="bg-teal-50/70 p-2.5 rounded-xl border-2 border-ink/40 mb-3">
+              <span class="text-[10px] font-bold text-gray-500 uppercase tracking-wider block mb-1">Neler Öğreneceksin?</span>
+              <ul class="text-[11px] font-bold text-ink space-y-1">
+                <li class="flex items-center gap-1"><span>⬆️</span> Açık hava basıncının ($P_0$) yukarı doğru güçlü bir itme yaptığını kavrar.</li>
+                <li class="flex items-center gap-1"><span>🌐</span> Gaz basıncının katılar gibi tek yöne değil, her yöne etki ettiğini görür.</li>
+                <li class="flex items-center gap-1"><span>⚖️</span> İç ve dış basınç dengelendiğinde suyun yer çekimiyle nasıl döküldüğünü inceler.</li>
+              </ul>
+            </div>
+
+            <!-- Etiketler -->
+            <div class="flex flex-wrap gap-1.5">
+              <span class="px-2 py-0.5 bg-teal-100 text-teal-800 text-[10px] font-bold rounded-lg border border-ink">Açık Hava Basıncı</span>
+              <span class="px-2 py-0.5 bg-purple-100 text-purple-800 text-[10px] font-bold rounded-lg border border-ink">P₀ = 101.3 kPa</span>
+              <span class="px-2 py-0.5 bg-sky-100 text-sky-800 text-[10px] font-bold rounded-lg border border-ink">Torricelli Prensibi</span>
+            </div>
+          </div>
+
+          <!-- Aksiyon Butonları -->
+          <div class="flex items-center gap-2 pt-3 border-t-2 border-dashed border-gray-300">
+            <a href="bardaktaki-su-dokulmuyor.html" class="pushable flex-1 text-center display bg-teal-500 hover:bg-teal-600 text-white py-2.5 text-sm flex items-center justify-center gap-1.5 shadow-sm font-extrabold">
+              <span class="text-base">🥛</span> <span class="font-extrabold text-white text-sm">Deneye Başla</span>
+            </a>
+            <button onclick="openModalSimulation('bardaktaki-su-dokulmuyor.html', 'Bardaktaki Su Dökülmüyor: Açık Hava Basıncı Simülasyonu')" class="pushable bg-white hover:bg-gray-100 px-3 py-2.5 text-ink font-bold text-xs" title="Sayfadan ayrılmadan aç">
+              <span>🖥️</span> <span>Hızlı</span>
+            </button>
+          </div>
+        </div>
+
+      </article>
+
     </div>
 
   </section>
@@ -2017,6 +2119,8 @@
       <a href="sogan-zarinda-hucre-kesfi.html" class="hover:text-ink hover:underline">Soğan Zarında Hücre Keşfi</a>
       <span>·</span>
       <a href="basinc-uzmani-pipetler.html" class="hover:text-ink hover:underline">Basınç Uzmanı Pipetler</a>
+      <span>·</span>
+      <a href="bardaktaki-su-dokulmuyor.html" class="hover:text-ink hover:underline">Bardaktaki Su Dökülmüyor</a>
     </div>
   </footer>
 
