@@ -117,7 +117,7 @@
 
       <div class="flex items-center gap-3">
         <div class="hidden sm:flex items-center gap-2 bg-amber-100 px-3 py-1.5 rounded-xl border-2 border-ink text-xs font-bold">
-          <span>✨</span> <span>18 Harika Deney Hazır!</span>
+          <span>✨</span> <span>19 Harika Deney Hazır!</span>
         </div>
         <button id="btnSoundWelcome" class="pushable bg-emerald-400 hover:bg-emerald-300 px-4 py-2 text-xs font-bold flex items-center gap-1.5 text-ink">
           <span>🎉</span> <span>Kutlama Yap!</span>
@@ -1791,6 +1791,105 @@
 
       </article>
 
+      <!-- 19. DENEY: BASINÇ UZMANI PİPETLER (YÜZEY ALANI VE BASINÇ) -->
+      <article class="chunky bg-white overflow-hidden flex flex-col justify-between hover:shadow-[0_12px_0_#182b4d] transition-all">
+        
+        <!-- Kart Görsel Başlığı (İllüstrasyon) -->
+        <div class="bg-gradient-to-br from-amber-100 via-yellow-50 to-orange-100 p-6 border-b-3 border-ink flex items-center justify-center relative min-h-[190px]">
+          <!-- Basınç Rozeti -->
+          <div class="absolute top-3 left-3 bg-white/95 px-2.5 py-0.5 rounded-full border-2 border-ink text-[11px] font-black text-ink shadow-[0_2px_0_#182b4d] flex items-center gap-1">
+            <span>🥔</span> <span>Katı Basıncı & Hava Kilidi</span>
+          </div>
+
+          <!-- Kategori Rozeti -->
+          <div class="absolute top-3 right-3 bg-orange-400 text-ink px-2.5 py-0.5 rounded-full border-2 border-ink text-[11px] font-black shadow-[0_2px_0_#182b4d]">
+            4, 5 & 8. Sınıf
+          </div>
+
+          <!-- Deney İllüstrasyonu (SVG Patates, Saplanmış Sert Pipet, Eldivenli El, P=F/A) -->
+          <div class="flex flex-col items-center">
+            <svg width="170" height="125" viewBox="0 0 170 125" class="sticker">
+              <!-- Zemin Ahşap Gölgesi -->
+              <ellipse cx="85" cy="115" rx="55" ry="7" fill="#cbd5e1" opacity="0.6" />
+
+              <!-- Çiğ Patates Gövdesi -->
+              <path d="M 40 102 C 35 78, 60 65, 85 68 C 112 65, 135 78, 130 102 C 125 116, 105 118, 85 117 C 65 118, 45 116, 40 102 Z" 
+                    fill="#d97706" stroke="#182b4d" stroke-width="2.5" />
+              <!-- Patates Benekleri -->
+              <ellipse cx="65" cy="85" rx="2.5" ry="1.5" fill="#78350f" opacity="0.7" />
+              <ellipse cx="105" cy="90" rx="3" ry="1.5" fill="#78350f" opacity="0.7" />
+              <ellipse cx="85" cy="105" rx="2.5" ry="1.2" fill="#78350f" opacity="0.6" />
+
+              <!-- Patatese Saplanmış Sert Pipet -->
+              <rect x="81" y="24" width="8" height="60" rx="1" fill="#0284c7" stroke="#182b4d" stroke-width="2" />
+              <line x1="84" y1="24" x2="84" y2="84" stroke="#e11d48" stroke-width="1.8" />
+
+              <!-- Üstteki Başparmak (Hava Kilidi) -->
+              <g transform="translate(85, 20)">
+                <ellipse cx="0" cy="0" rx="9" ry="6" fill="#3b82f6" stroke="#182b4d" stroke-width="2" />
+                <path d="M -5 -2 Q 0 2 5 -2" fill="none" stroke="#93c5fd" stroke-width="1.2" />
+                <text x="14" y="3" font-size="8" font-weight="900" fill="#2563eb" font-family="'Baloo 2'">Kilitli!</text>
+              </g>
+
+              <!-- Darbe / Saplanma Kıvılcımları -->
+              <path d="M 72 70 L 76 74" stroke="#facc15" stroke-width="2" stroke-linecap="round" />
+              <path d="M 98 70 L 94 74" stroke="#facc15" stroke-width="2" stroke-linecap="round" />
+
+              <!-- Formül Rozeti (Sol Üstte Yüzen Baloncuk) -->
+              <g transform="translate(32, 38)">
+                <rect x="-24" y="-10" width="48" height="20" rx="5" fill="#ffffff" stroke="#182b4d" stroke-width="1.5" />
+                <text x="0" y="4" text-anchor="middle" font-size="9" font-weight="900" fill="#e11d48" font-family="'Baloo 2'">P = F / A</text>
+              </g>
+            </svg>
+            <span class="mt-2 px-3 py-0.5 bg-white/95 border-2 border-ink rounded-full text-[11px] font-black text-ink shadow-[0_2px_0_#182b4d]">
+              📐 Basınç & Pnömatik Güç
+            </span>
+          </div>
+        </div>
+
+        <!-- Kart İçerik -->
+        <div class="p-5 flex-1 flex flex-col justify-between gap-4">
+          <div>
+            <div class="flex items-center gap-2 mb-2">
+              <span class="text-2xl">🥔</span>
+              <h3 class="display text-xl text-ink">Basınç Uzmanı Pipetler</h3>
+            </div>
+            
+            <p class="text-xs text-gray-700 leading-relaxed font-semibold mb-3">
+              İncecik plastik bir pipet sert bir patatesi delebilir mi? Başparmağınla hava kilidi yap, pipetin ucunu sivri kes ve basıncın yüzey alanıyla ($P = F/A$) mucizevi ilişkisini patatese saplayarak keşfet!
+            </p>
+
+            <!-- Kazanımlar -->
+            <div class="bg-amber-50/70 p-2.5 rounded-xl border-2 border-ink/40 mb-3">
+              <span class="text-[10px] font-bold text-gray-500 uppercase tracking-wider block mb-1">Neler Öğreneceksin?</span>
+              <ul class="text-[11px] font-bold text-ink space-y-1">
+                <li class="flex items-center gap-1"><span>📐</span> Yüzey alanı küçüldükçe katı basıncının ($P = F/A$) katbekat arttığını kavrar.</li>
+                <li class="flex items-center gap-1"><span>💨</span> Hapsolan havanın sıkışarak plastiği çelik gibi bir sütuna çevirdiğini görür.</li>
+                <li class="flex items-center gap-1"><span>🔪</span> Bıçak, iğne ve çivilerin neden sivri yapıldığının bilimsel mantığını çözer.</li>
+              </ul>
+            </div>
+
+            <!-- Etiketler -->
+            <div class="flex flex-wrap gap-1.5">
+              <span class="px-2 py-0.5 bg-orange-100 text-orange-800 text-[10px] font-bold rounded-lg border border-ink">Katı Basıncı</span>
+              <span class="px-2 py-0.5 bg-sky-100 text-sky-800 text-[10px] font-bold rounded-lg border border-ink">Hava Kilidi</span>
+              <span class="px-2 py-0.5 bg-amber-100 text-amber-800 text-[10px] font-bold rounded-lg border border-ink">Yüzey Alanı (P=F/A)</span>
+            </div>
+          </div>
+
+          <!-- Aksiyon Butonları -->
+          <div class="flex items-center gap-2 pt-3 border-t-2 border-dashed border-gray-300">
+            <a href="basinc-uzmani-pipetler.html" class="pushable flex-1 text-center display bg-amber-500 hover:bg-amber-600 text-white py-2.5 text-sm flex items-center justify-center gap-1.5 shadow-sm font-extrabold">
+              <span class="text-base">🥔</span> <span class="font-extrabold text-white text-sm">Deneye Başla</span>
+            </a>
+            <button onclick="openModalSimulation('basinc-uzmani-pipetler.html', 'Basınç Uzmanı Pipetler: Patates Delme Simülasyonu')" class="pushable bg-white hover:bg-gray-100 px-3 py-2.5 text-ink font-bold text-xs" title="Sayfadan ayrılmadan aç">
+              <span>🖥️</span> <span>Hızlı</span>
+            </button>
+          </div>
+        </div>
+
+      </article>
+
     </div>
 
   </section>
@@ -1916,6 +2015,8 @@
       <a href="kalbimiz-kani-pompaliyor.html" class="hover:text-ink hover:underline">Kalbimiz Kanı Pompalıyor</a>
       <span>·</span>
       <a href="sogan-zarinda-hucre-kesfi.html" class="hover:text-ink hover:underline">Soğan Zarında Hücre Keşfi</a>
+      <span>·</span>
+      <a href="basinc-uzmani-pipetler.html" class="hover:text-ink hover:underline">Basınç Uzmanı Pipetler</a>
     </div>
   </footer>
 
