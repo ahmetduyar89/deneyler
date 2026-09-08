@@ -188,7 +188,7 @@
           <div class="w-full flex items-center justify-between text-[11px] font-bold text-gray-500 border-b border-dashed border-purple-200 pb-1 pointer-events-none">
             <span>🧴 Pet Şişe (Asetik Asit: Sirke)</span>
             <span>🧂 Huni ile Doldurulan Sodyum Bikarbonat (Karbonat)</span>
-            <span>🎈 $CO_2$ Gaz Basıncı</span>
+            <span>🎈 CO₂ Gaz Basıncı</span>
           </div>
 
           <!-- Merkez SVG Sahne: Pet Şişe, Balon ve Köpürme Reaksiyonu -->
@@ -224,8 +224,11 @@
 
               <!-- Dökülen Karbonat Tozu Akışı (Animasyon esnasında görünür) -->
               <g id="powderStream" opacity="0">
-                <line x1="140" y1="145" x2="140" y2="240" stroke="#f8fafc" stroke-width="5" stroke-dasharray="4 3" />
-                <ellipse cx="140" cy="255" rx="16" ry="6" fill="#ffffff" />
+                <line x1="140" y1="135" x2="140" y2="240" stroke="#ffffff" stroke-width="6" stroke-dasharray="5 3" />
+                <circle cx="138" cy="160" r="2.5" fill="#f8fafc" />
+                <circle cx="142" cy="185" r="3" fill="#f8fafc" />
+                <circle cx="139" cy="210" r="2.5" fill="#f8fafc" />
+                <ellipse cx="140" cy="245" rx="14" ry="5" fill="#ffffff" />
               </g>
 
               <!-- Saydam Plastik Pet Şişe Konturu -->
@@ -240,31 +243,28 @@
               <path d="M110 205 L110 265" stroke="#ffffff" stroke-width="3" stroke-linecap="round" opacity="0.6" />
 
               <!-- ===== BALON SİSTEMİ ===== -->
-              <!-- Balon Şişe Boğazı Bağlantı Lastiği -->
-              <ellipse id="balloonNeckRing" cx="140" cy="132" rx="10" ry="4" fill="#ef4444" stroke="#0f172a" stroke-width="2" />
+              <!-- Balon Şişe Boğazı Bağlantı Lastiği (Şişe ağzına sabitlenmiş kauçuk halka) -->
+              <ellipse id="balloonNeckRing" cx="140" cy="132" rx="11" ry="4" fill="#ef4444" stroke="#0f172a" stroke-width="2.5" />
 
-              <!-- Sönük / Dökülen Balon (Başlangıçta yana eğik, karbonatı tutar) -->
-              <g id="balloonDroopingGroup" class="cursor-pointer" transform="translate(140, 132)">
-                <!-- Balonun gövdesi (yana doğru yatmış) -->
-                <path id="droopBody" d="M-8 0 C-25 10 -65 5 -60 -25 C-55 -55 -15 -45 0 -8 C6 -2 6 0 0 0 Z" 
-                      fill="#ef4444" stroke="#0f172a" stroke-width="3" />
-                <!-- Balon içindeki beyaz karbonat birikintisi -->
-                <ellipse cx="-42" cy="-22" rx="15" ry="10" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5" opacity="0.95" />
-                <text x="-42" y="-20" text-anchor="middle" font-size="7" font-weight="900" fill="#64748b">Karbonat</text>
-                <!-- Balon Işık Yansıması -->
-                <path d="M-50 -35 C-45 -45 -25 -42 -18 -30" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" fill="none" opacity="0.5" />
-              </g>
+              <!-- Tek Parça Entegre Balon Mekanizması (Pivot: Şişe Ağzı 140, 132) -->
+              <g id="balloonArm" class="cursor-pointer" transform="translate(140, 132) rotate(-95)">
+                <!-- Balon Boğazı / Borusu (Şişe ağzından balon gövdesine esneyen bağlantı) -->
+                <path id="balloonNeck" d="M -7,0 L 7,0 L 6,-14 L -6,-14 Z" fill="#ef4444" stroke="#0f172a" stroke-width="2.5" stroke-linejoin="round" />
+                
+                <!-- Balon Gövdesi (Sönük halde başlar, gaz doldukça elastik şişer) -->
+                <ellipse id="balloonBody" cx="0" cy="-38" rx="16" ry="24" fill="#ef4444" stroke="#0f172a" stroke-width="3" />
+                
+                <!-- Balon Yüzey Parlaması -->
+                <ellipse id="balloonGloss" cx="-5" cy="-44" rx="4.5" ry="10" fill="#ffffff" opacity="0.45" transform="rotate(-15 -5 -44)" />
+                
+                <!-- Balon İçindeki Karbonat Tozu (Balon dikilince şişeye dökülür) -->
+                <g id="balloonPowderGroup">
+                  <ellipse id="balloonPowder" cx="0" cy="-34" rx="11" ry="15" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5" />
+                  <text id="balloonPowderText" x="0" y="-32" text-anchor="middle" font-size="7" font-weight="900" fill="#64748b">Karbonat</text>
+                </g>
 
-              <!-- Şişen Dik Balon (Tepkime başlayınca yukarı dikilir ve şişer) -->
-              <g id="balloonInflatedGroup" opacity="0" transform="translate(140, 130)">
-                <!-- Balonun Şişen Eliptik Gövdesi -->
-                <ellipse id="balloonBody" cx="0" cy="-60" rx="20" ry="24" fill="#ef4444" stroke="#0f172a" stroke-width="3.5" />
-                <!-- Balon Işık Yansıması -->
-                <ellipse id="balloonGloss" cx="-7" cy="-70" rx="6" ry="10" fill="#ffffff" opacity="0.5" transform="rotate(-20 -7 -70)" />
-                <!-- Balon Alt Düğüm / Ağız Üçgeni -->
-                <polygon points="-8,0 8,0 4,-10 -4,-10" fill="#ef4444" stroke="#0f172a" stroke-width="2" />
-                <!-- İçindeki CO2 Gaz Molekülleri İşareti -->
-                <text id="balloonText" x="0" y="-55" text-anchor="middle" font-size="12" font-weight="900" fill="#ffffff" opacity="0">CO₂</text>
+                <!-- Şişince Beliren CO₂ Gazı İşareti -->
+                <text id="balloonText" x="0" y="-55" text-anchor="middle" font-size="14" font-weight="900" fill="#ffffff" opacity="0">CO₂</text>
               </g>
 
             </svg>
@@ -434,7 +434,7 @@
 
         <!-- Bilimsel Açıklama -->
         <div class="p-3 bg-amber-50 rounded-xl border-2 border-ink text-xs font-bold text-amber-950 leading-relaxed">
-          💡 <b>Neden Söndü?</b> Ateşin yanabilmesi için oksijene ($O_2$) ihtiyacı vardır. Karbondioksit gazı ($CO_2$) havadan ve oksijenden daha ağır olduğu için mumun etrafına çöker, alevin oksijenle temasını tamamen keser ve ateşi anında boğarak söndürür. Yangın söndürme tüplerinin içinde de tam olarak bu gaz bulunur!
+          💡 <b>Neden Söndü?</b> Ateşin yanabilmesi için oksijene (O₂) ihtiyacı vardır. Karbondioksit gazı (CO₂) havadan ve oksijenden daha ağır olduğu için mumun etrafına çöker, alevin oksijenle temasını tamamen keser ve ateşi anında boğarak söndürür. Yangın söndürme tüplerinin içinde de tam olarak bu gaz bulunur!
         </div>
       </section>
 
@@ -600,16 +600,16 @@
         <div class="space-y-2 text-xs font-bold">
           <div class="p-2.5 bg-purple-50 rounded-xl border border-purple-200">
             <p class="font-black text-purple-900 mb-1">Giren Maddeler:</p>
-            <p class="text-gray-700 leading-tight">🍏 Sirke (Asetik Asit: $CH_3COOH$)</p>
-            <p class="text-gray-700 leading-tight">🧂 Karbonat (Sodyum Bikarbonat: $NaHCO_3$)</p>
+            <p class="text-gray-700 leading-tight">🍏 Sirke (Asetik Asit: CH₃COOH)</p>
+            <p class="text-gray-700 leading-tight">🧂 Karbonat (Sodyum Bikarbonat: NaHCO₃)</p>
           </div>
 
           <div class="text-center text-purple-600 font-black text-base">⬇️ KİMYASAL TEPKİME ⬇️</div>
 
           <div class="p-2.5 bg-emerald-50 rounded-xl border border-emerald-200">
             <p class="font-black text-emerald-900 mb-1">Çıkan Yeni Maddeler:</p>
-            <p class="text-emerald-800 font-extrabold leading-tight">💨 Karbondioksit Gazı ($CO_2$ - Balonu şişirir!)</p>
-            <p class="text-gray-700 leading-tight">💧 Su ($H_2O$)</p>
+            <p class="text-emerald-800 font-extrabold leading-tight">💨 Karbondioksit Gazı (CO₂ - Balonu şişirir!)</p>
+            <p class="text-gray-700 leading-tight">💧 Su (H₂O)</p>
             <p class="text-gray-700 leading-tight">🧂 Sodyum Asetat Tuzu</p>
           </div>
         </div>
@@ -624,10 +624,10 @@
 
         <div class="space-y-2 text-xs font-bold text-gray-700">
           <p class="leading-snug">
-            🍰 <b>Keklerin Kabarması:</b> Kek hamuruna konan kabartma tozu fırının sıcağında $CO_2$ gazı çıkarır, kekin içinde binlerce minik delik açarak onu yumuşacık kabartır!
+            🍰 <b>Keklerin Kabarması:</b> Kek hamuruna konan kabartma tozu fırının sıcağında CO₂ gazı çıkarır, kekin içinde binlerce minik delik açarak onu yumuşacık kabartır!
           </p>
           <p class="leading-snug">
-            🧯 <b>Yangın Söndürücüler:</b> $CO_2$ gazı oksijeni kovup ateşi boğduğu için elektrikli cihaz ve benzin yangınlarında en güvenli söndürücüdür.
+            🧯 <b>Yangın Söndürücüler:</b> CO₂ gazı oksijeni kovup ateşi boğduğu için elektrikli cihaz ve benzin yangınlarında en güvenli söndürücüdür.
           </p>
         </div>
       </div>
@@ -905,20 +905,26 @@
 
     // Balon Rengi Seçimi
     const balloonBody = document.getElementById('balloonBody');
-    const droopBody = document.getElementById('droopBody');
+    const balloonNeck = document.getElementById('balloonNeck');
     const balloonNeckRing = document.getElementById('balloonNeckRing');
+    const balloonGloss = document.getElementById('balloonGloss');
+    const balloonPowderGroup = document.getElementById('balloonPowderGroup');
+    const balloonPowder = document.getElementById('balloonPowder');
+    const balloonPowderText = document.getElementById('balloonPowderText');
+    const balloonArm = document.getElementById('balloonArm');
+    const balloonText = document.getElementById('balloonText');
     const labelBalloonColor = document.getElementById('labelBalloonColor');
     const colorButtons = document.querySelectorAll('.btn-color');
 
     colorButtons.forEach(btn => {
-      btn.addEventListener('click', (e) => {
+      btn.addEventListener('click', () => {
         const color = btn.getAttribute('data-color');
         State.balloonColor = color;
         colorButtons.forEach(b => b.classList.remove('ring-2', 'ring-ink'));
         btn.classList.add('ring-2', 'ring-ink');
 
         balloonBody.setAttribute('fill', color);
-        droopBody.setAttribute('fill', color);
+        balloonNeck.setAttribute('fill', color);
         balloonNeckRing.setAttribute('fill', color);
 
         const colorNameMap = {
@@ -937,9 +943,6 @@
     // --- 5. KİMYASAL TEPKİME FİZİK MOTORU ---
     const btnDumpBaking = document.getElementById('btnDumpBaking');
     const btnReset = document.getElementById('btnReset');
-    const balloonDroopingGroup = document.getElementById('balloonDroopingGroup');
-    const balloonInflatedGroup = document.getElementById('balloonInflatedGroup');
-    const balloonText = document.getElementById('balloonText');
     const foamPillar = document.getElementById('foamPillar');
     const bubbleGroup = document.getElementById('bubbleGroup');
     const powderStream = document.getElementById('powderStream');
@@ -960,11 +963,24 @@
       sensorTemp.textContent = '24.0';
 
       // Animasyonları sıfırla
-      gsap.killTweensOf([balloonBody, foamPillar, balloonDroopingGroup, balloonInflatedGroup]);
+      gsap.killTweensOf([balloonBody, foamPillar, balloonArm, balloonNeck, balloonPowderGroup]);
 
-      balloonDroopingGroup.style.opacity = '1';
-      balloonDroopingGroup.setAttribute('transform', 'translate(140, 132)');
-      balloonInflatedGroup.style.opacity = '0';
+      // Balon başlangıçta yana yatık, şişenin ağzına sıkıca kenetli
+      balloonArm.setAttribute('transform', 'translate(140, 132) rotate(-95)');
+      balloonNeck.setAttribute('d', 'M -7,0 L 7,0 L 6,-14 L -6,-14 Z');
+      balloonBody.setAttribute('rx', '16');
+      balloonBody.setAttribute('ry', '24');
+      balloonBody.setAttribute('cy', '-38');
+
+      balloonGloss.setAttribute('cx', '-5');
+      balloonGloss.setAttribute('cy', '-44');
+      balloonGloss.setAttribute('rx', '4.5');
+      balloonGloss.setAttribute('ry', '10');
+      balloonGloss.setAttribute('transform', 'rotate(-15 -5 -44)');
+
+      balloonPowderGroup.style.opacity = '1';
+      gsap.set(balloonPowderGroup, { scaleY: 1, opacity: 1, transformOrigin: '0px -34px' });
+
       balloonText.style.opacity = '0';
 
       foamPillar.setAttribute('opacity', '0');
@@ -992,22 +1008,34 @@
       tipIcon.textContent = '⏳';
       tipText.textContent = 'Balon dikeliyor, karbonat sirkeye dökülüyor!';
 
-      // 1. Adım: Balon yukarı kaldırılır ve karbonat dökülür
-      gsap.to(balloonDroopingGroup, {
-        rotation: -80,
-        transformOrigin: "0px 0px",
-        duration: 0.7,
-        ease: "power2.out",
+      // 1. Adım: Balon şişe ağzı merkezinde (140, 132) dik konuma kaldırılır
+      const tiltObj = { angle: -95 };
+      gsap.to(tiltObj, {
+        angle: 0,
+        duration: 0.8,
+        ease: "power2.inOut",
+        onUpdate: () => {
+          balloonArm.setAttribute('transform', `translate(140, 132) rotate(${tiltObj.angle})`);
+        },
         onComplete: () => {
-          // Karbonat akışı başlar
+          // 2. Adım: Balon içindeki toz şişe boğazından aşağı dökülür
+          gsap.to(balloonPowderGroup, {
+            scaleY: 0.1,
+            opacity: 0,
+            duration: 0.4,
+            ease: "power2.in",
+            transformOrigin: "0px -34px"
+          });
+
+          // Şişe içinde dökülen toz akışı görünür
           powderStream.setAttribute('opacity', '1');
+          Sound.pour();
           Sound.fizz(3.2);
 
-          // 2. Adım: Şiddetli köpürme yükselir
+          // 3. Adım: Köpürme yükselir
           foamPillar.setAttribute('opacity', '0.9');
           bubbleGroup.setAttribute('opacity', '1');
 
-          // Köpük yükselmesi (sirke seviyesine göre yukarı tırmanır)
           gsap.fromTo(foamPillar, 
             { attr: { d: "M104 275 L104 270 Q140 268 176 270 L176 275 Z" } },
             { 
@@ -1017,30 +1045,36 @@
             }
           );
 
-          // 3. Adım: Balon şişmeye başlar
+          // 4. Adım: Karbonat eridikçe CO2 gazı balonu şişirir
           setTimeout(() => {
             powderStream.setAttribute('opacity', '0');
-            balloonDroopingGroup.style.opacity = '0';
-            balloonInflatedGroup.style.opacity = '1';
 
             // Hedef Balon Boyutu (Sirke ve karbonata göre hesaplanır)
-            // Min: 35px rx, Max: 68px rx
             const power = (State.vinegarMl / 50) * (State.bakingSpoons / 1); // 1 to 9
-            const targetRx = 24 + (power * 4.8);
-            const targetRy = 28 + (power * 5.6);
-            const targetCy = -55 - (power * 3.5);
+            const targetRx = 26 + (power * 3.4); // ~30 to 57
+            const targetRy = 32 + (power * 4.0); // ~36 to 68
+            const targetCy = -40 - (power * 3.8); // ~-44 to -74
             const targetGas = Math.round(power * 140); // 140 ml to 1260 ml CO2
 
             tipIcon.textContent = '🎈';
             tipText.textContent = 'KİMYASAL TEPKİME BAŞLADI! CO₂ gazı balonu hızla şişiriyor!';
             Sound.balloonInflate();
 
+            // Balon boynunun esneyip genişlemesi
+            const neckW = 6 + Math.min(power * 0.8, 5);
+            gsap.to(balloonNeck, {
+              attr: { d: `M -7,0 L 7,0 L ${neckW},-14 L -${neckW},-14 Z` },
+              duration: 1.8,
+              ease: "power1.out"
+            });
+
+            // Balon gövdesinin şişmesi
             gsap.fromTo(balloonBody, 
-              { attr: { rx: 12, ry: 15, cy: -20 } },
+              { attr: { rx: 16, ry: 24, cy: -38 } },
               { 
                 attr: { rx: targetRx, ry: targetRy, cy: targetCy },
                 duration: 2.2,
-                ease: "elastic.out(1, 0.5)",
+                ease: "elastic.out(1, 0.4)",
                 onUpdate: function() {
                   const prog = this.progress();
                   const curGas = Math.round(targetGas * prog);
@@ -1048,6 +1082,19 @@
                   // Endotermik soğuma
                   const curTemp = (24.0 - (prog * 5.2)).toFixed(1);
                   sensorTemp.textContent = curTemp;
+
+                  // Işıltıyı balonla orantılı taşı
+                  const curCy = -38 + (targetCy - (-38)) * prog;
+                  const curRx = 16 + (targetRx - 16) * prog;
+                  const curRy = 24 + (targetRy - 24) * prog;
+                  balloonGloss.setAttribute('cx', -curRx * 0.25);
+                  balloonGloss.setAttribute('cy', curCy - (curRy * 0.2));
+                  balloonGloss.setAttribute('rx', Math.max(curRx * 0.22, 4.5));
+                  balloonGloss.setAttribute('ry', Math.max(curRy * 0.35, 9));
+                  balloonGloss.setAttribute('transform', `rotate(-15 ${-curRx * 0.25} ${curCy - (curRy * 0.2)})`);
+
+                  // CO2 yazısını ortala
+                  balloonText.setAttribute('y', curCy + 5);
                 },
                 onComplete: () => {
                   balloonText.style.opacity = '1';
@@ -1087,7 +1134,7 @@
     }
 
     btnDumpBaking.addEventListener('click', startReaction);
-    balloonDroopingGroup.addEventListener('click', startReaction);
+    balloonArm.addEventListener('click', startReaction);
 
 
     // --- 6. MUM SÖNDÜRME TESTİ ---
