@@ -94,6 +94,13 @@
     input[type=range] {
       accent-color: #d97706;
     }
+    /* SVG Güvenli Hover Efekti (Konumu Bozmayan Sabit Işıma) */
+    #onionObject {
+      cursor: pointer;
+    }
+    #onionObject:hover path {
+      filter: drop-shadow(0 0 6px rgba(245, 158, 11, 0.75));
+    }
     @keyframes pulse-subtle {
       0%, 100% { opacity: 0.95; transform: scale(1); }
       50% { opacity: 1; transform: scale(1.02); }
@@ -194,19 +201,19 @@
               </defs>
 
               <!-- 1. SOĞAN KATMANI (Sol tarafta duran soğan parçası) -->
-              <g id="onionObject" transform="translate(60, 130)" class="transition-transform duration-200 hover:scale-105">
+              <g id="onionObject" transform="translate(75, 140)">
                 <!-- Soğan Dış Kabuk -->
                 <path d="M -40 30 C -40 -20, 40 -20, 40 30 Z" fill="#fef08a" stroke="#182b4d" stroke-width="3" />
                 <!-- Soğan Etli Katman Çizgileri -->
                 <path d="M -30 30 C -30 -10, 30 -10, 30 30" fill="none" stroke="#eab308" stroke-width="2.5" />
                 <path d="M -18 30 C -18 0, 18 0, 18 30" fill="none" stroke="#ca8a04" stroke-width="2" />
                 <!-- Zar Soyulma Hattı (Kırmızı kesikli hat) -->
-                <path id="peelHighlight" d="M -12 26 C -12 6, 12 6, 12 26" fill="none" stroke="#ef4444" stroke-width="2" stroke-dasharray="4 2" class="animate-pulse" />
+                <path id="peelHighlight" d="M -12 26 C -12 6, 12 6, 12 26" fill="none" stroke="#ef4444" stroke-width="2" stroke-dasharray="4 2" opacity="0.9" />
                 <text x="0" y="44" text-anchor="middle" font-size="10" font-weight="900" fill="#182b4d" font-family="'Baloo 2'">🧅 Taze Soğan</text>
               </g>
 
               <!-- CIMBIZ (Zar Çekme Aleti) -->
-              <g id="tweezerObject" transform="translate(65, 80)" class="transition-all duration-300">
+              <g id="tweezerObject" transform="translate(80, 85)">
                 <path d="M 0 0 L 15 -45 L 20 -45 L 6 0 Z" fill="#94a3b8" stroke="#182b4d" stroke-width="2" />
                 <path d="M 3 0 L 22 -45 L 25 -45 L 8 0 Z" fill="#cbd5e1" stroke="#182b4d" stroke-width="1.8" />
                 <!-- Cımbızın Ucundaki Zar Parçası -->
@@ -334,7 +341,7 @@
             </div>
 
             <!-- HÜCRE KOLONİSİ SVG ÇİZİM ALANI -->
-            <svg id="scopeSvg" viewBox="0 0 400 400" class="w-full h-full relative z-10 select-none transition-transform duration-300">
+            <svg id="scopeSvg" viewBox="0 0 400 400" class="w-full h-full relative z-10 select-none">
               
               <defs>
                 <!-- Bulanıklık Filtresi (Netlik/Fokus için) -->
@@ -391,7 +398,7 @@
               </g>
 
               <!-- SEÇİLEN ORGANELE ODAK HALKASI -->
-              <circle id="inspectRing" cx="-100" cy="-100" r="16" fill="none" stroke="#ef4444" stroke-width="2.5" stroke-dasharray="4 3" class="animate-spin" opacity="0" pointer-events="none" />
+              <circle id="inspectRing" cx="-100" cy="-100" r="16" fill="none" stroke="#ef4444" stroke-width="2.5" stroke-dasharray="4 3" opacity="0" pointer-events="none" />
 
             </svg>
           </div>
@@ -916,76 +923,131 @@
       }
     }
 
+    let isPrepAnimating = false;
+
     function advancePrepStep() {
+      if (isPrepAnimating) return;
+
       if (State.prepStep === 1) {
         // Cımbız soğana yaklaşır ve zarı koparır
+        isPrepAnimating = true;
         Sound.snap();
         gsap.to(tweezerObject, {
-          x: 45,
-          y: 110,
-          duration: 0.4,
+          x: 75,
+          y: 135,
+          duration: 0.45,
+          ease: "power2.inOut",
           onComplete: () => {
             tweezerMembrane.setAttribute('opacity', '1');
             Sound.snap();
-            gsap.to(tweezerObject, { x: 90, y: 70, duration: 0.5 });
-            State.prepStep = 2;
-            updatePrepUI();
+            gsap.to(tweezerObject, {
+              x: 90,
+              y: 75,
+              duration: 0.45,
+              ease: "power2.out",
+              onComplete: () => {
+                State.prepStep = 2;
+                updatePrepUI();
+                isPrepAnimating = false;
+              }
+            });
           }
         });
       } else if (State.prepStep === 2) {
         // Cımbız zarı lama taşır
+        isPrepAnimating = true;
         Sound.snap();
         gsap.to(tweezerObject, {
-          x: 230,
-          y: 135,
+          x: 240,
+          y: 140,
           duration: 0.6,
+          ease: "power2.inOut",
           onComplete: () => {
             tweezerMembrane.setAttribute('opacity', '0');
             membraneOnSlide.setAttribute('opacity', '0.9');
             membraneCellPattern.setAttribute('opacity', '0.7');
             Sound.clack();
-            gsap.to(tweezerObject, { x: 320, y: 60, opacity: 0.3, duration: 0.4 });
-            State.prepStep = 3;
-            updatePrepUI();
+            gsap.to(tweezerObject, {
+              x: 325,
+              y: 60,
+              opacity: 0.25,
+              duration: 0.4,
+              ease: "power2.out",
+              onComplete: () => {
+                State.prepStep = 3;
+                updatePrepUI();
+                isPrepAnimating = false;
+              }
+            });
           }
         });
       } else if (State.prepStep === 3) {
         // Damlalık belirir ve iyot damlatır
+        isPrepAnimating = true;
         dropperObject.setAttribute('opacity', '1');
-        gsap.fromTo(dropperObject, { y: 20 }, { y: 75, duration: 0.4, onComplete: () => {
-          // Damla düşer
-          Sound.drip();
-          gsap.to(hangingDrop, { y: 60, opacity: 0, duration: 0.25, onComplete: () => {
-            iodineStainOnSlide.setAttribute('opacity', '0.7');
-            membraneOnSlide.setAttribute('fill', '#f59e0b');
-            membraneOnSlide.setAttribute('stroke', '#b45309');
-            gsap.to(dropperObject, { y: 10, opacity: 0, duration: 0.4 });
-            State.prepStep = 4;
-            updatePrepUI();
-          }});
-        }});
+        hangingDrop.setAttribute('opacity', '1');
+        gsap.set(hangingDrop, { y: 0, opacity: 1 });
+        gsap.fromTo(dropperObject, { y: 20, opacity: 0 }, {
+          y: 70,
+          opacity: 1,
+          duration: 0.4,
+          ease: "power2.out",
+          onComplete: () => {
+            // Damla düşer
+            Sound.drip();
+            gsap.to(hangingDrop, {
+              y: 60,
+              opacity: 0,
+              duration: 0.25,
+              onComplete: () => {
+                iodineStainOnSlide.setAttribute('opacity', '0.75');
+                membraneOnSlide.setAttribute('fill', '#f59e0b');
+                membraneOnSlide.setAttribute('stroke', '#b45309');
+                gsap.to(dropperObject, {
+                  y: 10,
+                  opacity: 0,
+                  duration: 0.35,
+                  onComplete: () => {
+                    State.prepStep = 4;
+                    updatePrepUI();
+                    isPrepAnimating = false;
+                  }
+                });
+              }
+            });
+          }
+        });
       } else if (State.prepStep === 4) {
         // Lamel 45 derece eğimle kapanır
+        isPrepAnimating = true;
         coverSlipObject.setAttribute('opacity', '1');
         gsap.fromTo(coverSlipObject, 
           { x: 20, y: -25, rotation: -40, transformOrigin: "left bottom" },
-          { x: 0, y: 0, rotation: 0, duration: 0.5, ease: "power2.out", onComplete: () => {
-            Sound.clack();
-            State.prepStep = 5;
-            State.isPrepComplete = true;
-            updatePrepUI();
-            btnPrepAction.classList.add('hidden');
-            btnGoToScope.classList.remove('hidden');
-            btnGoToScope.classList.add('flex');
-            
-            // Başarı rozeti
-            prepSuccessBadge.setAttribute('opacity', '1');
-            gsap.from(prepSuccessBadge, { scale: 0.7, duration: 0.4, ease: "back.out(1.7)" });
-            Sound.success();
+          {
+            x: 0,
+            y: 0,
+            rotation: 0,
+            duration: 0.5,
+            ease: "power2.out",
+            onComplete: () => {
+              Sound.clack();
+              State.prepStep = 5;
+              State.isPrepComplete = true;
+              updatePrepUI();
+              btnPrepAction.classList.add('hidden');
+              btnGoToScope.classList.remove('hidden');
+              btnGoToScope.classList.add('flex');
+              
+              // Başarı rozeti
+              prepSuccessBadge.setAttribute('opacity', '1');
+              gsap.fromTo(prepSuccessBadge, { scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.4, ease: "back.out(1.7)" });
+              Sound.success();
 
-            // 1. Görevi tamamla
-            completeMission('prep');
-          }}
+              // 1. Görevi tamamla
+              completeMission('prep');
+              isPrepAnimating = false;
+            }
+          }
         );
       }
     }
@@ -1674,9 +1736,17 @@
     // --- 9. SIFIRLAMA BUTONU ---
     document.getElementById('btnResetAll').addEventListener('click', () => {
       Sound.snap();
+      isPrepAnimating = false;
       State.prepStep = 1;
       State.isPrepComplete = false;
-      tweezerObject.setAttribute('transform', 'translate(65, 80)');
+      gsap.killTweensOf([tweezerObject, dropperObject, hangingDrop, coverSlipObject, prepSuccessBadge]);
+      gsap.set(tweezerObject, { clearProps: "all" });
+      gsap.set(dropperObject, { clearProps: "all" });
+      gsap.set(hangingDrop, { clearProps: "all" });
+      gsap.set(coverSlipObject, { clearProps: "all" });
+      gsap.set(prepSuccessBadge, { clearProps: "all" });
+      tweezerObject.setAttribute('transform', 'translate(80, 85)');
+      tweezerObject.style.opacity = '1';
       tweezerMembrane.setAttribute('opacity', '0');
       membraneOnSlide.setAttribute('opacity', '0');
       membraneOnSlide.setAttribute('fill', '#fef08a');
@@ -1689,6 +1759,7 @@
       prepSuccessBadge.setAttribute('opacity', '0');
       btnPrepAction.classList.remove('hidden');
       btnGoToScope.classList.add('hidden');
+      btnGoToScope.classList.remove('flex');
       updatePrepUI();
       switchMainTab('prep');
     });
