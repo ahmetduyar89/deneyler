@@ -117,7 +117,7 @@
 
       <div class="flex items-center gap-3">
         <div class="hidden sm:flex items-center gap-2 bg-amber-100 px-3 py-1.5 rounded-xl border-2 border-ink text-xs font-bold">
-          <span>✨</span> <span>21 Harika Deney Hazır!</span>
+          <span>✨</span> <span>22 Harika Deney Hazır!</span>
         </div>
         <button id="btnSoundWelcome" class="pushable bg-emerald-400 hover:bg-emerald-300 px-4 py-2 text-xs font-bold flex items-center gap-1.5 text-ink">
           <span>🎉</span> <span>Kutlama Yap!</span>
@@ -2103,6 +2103,106 @@
 
       </article>
 
+      <!-- Deney 22: Basit Sifon Yapalım (Suyun Kendiliğinden Akışı) -->
+      <article class="chunky bg-white overflow-hidden flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5 hover:shadow-card-lg border-3 border-ink group">
+        
+        <!-- Kart Görseli / SVG İllüstrasyonu -->
+        <div class="relative bg-gradient-to-b from-emerald-100 via-teal-50 to-amber-100/50 p-6 flex items-center justify-center border-b-3 border-ink overflow-hidden h-52">
+          
+          <!-- Arka Plan Minyatür Dekorları -->
+          <div class="absolute top-2 left-3 text-lg opacity-40">🌊</div>
+          <div class="absolute bottom-2 right-3 text-lg opacity-40">🧪</div>
+
+          <!-- Canlı Minyatür Sifon Sahnesi -->
+          <div class="relative w-full h-full flex flex-col items-center justify-center">
+            <svg viewBox="0 0 200 130" class="w-44 h-28 overflow-visible">
+              <defs>
+                <linearGradient id="siphonMiniWater" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#38bdf8"/>
+                  <stop offset="100%" stop-color="#0284c7"/>
+                </linearGradient>
+              </defs>
+              <!-- Masa Tablası -->
+              <line x1="10" y1="115" x2="190" y2="115" stroke="#182b4d" stroke-width="2.5" stroke-linecap="round"/>
+              <!-- Kap A (Yüksekte) -->
+              <g transform="translate(45, 115)">
+                <!-- Stand A -->
+                <rect x="-20" y="-35" width="40" height="35" rx="3" fill="#facc15" stroke="#182b4d" stroke-width="1.8"/>
+                <!-- Beher A -->
+                <rect x="-18" y="-75" width="36" height="40" rx="3" fill="#e0f2fe" stroke="#182b4d" stroke-width="1.8"/>
+                <rect x="-16" y="-65" width="32" height="28" fill="url(#siphonMiniWater)"/>
+                <text x="0" y="-80" text-anchor="middle" font-size="7" font-weight="900" fill="#0369a1" font-family="'Baloo 2'">Kap A</text>
+              </g>
+              <!-- Kap B (Alçakta) -->
+              <g transform="translate(155, 115)">
+                <!-- Beher B -->
+                <rect x="-18" y="-45" width="36" height="45" rx="3" fill="#e0f2fe" stroke="#182b4d" stroke-width="1.8"/>
+                <rect x="-16" y="-22" width="32" height="20" fill="url(#siphonMiniWater)"/>
+                <text x="0" y="-50" text-anchor="middle" font-size="7" font-weight="900" fill="#0369a1" font-family="'Baloo 2'">Kap B</text>
+              </g>
+              <!-- Şeffaf Kavisli Hortum -->
+              <path d="M 45 55 C 45 10, 155 10, 155 95" fill="none" stroke="#bae6fd" stroke-width="6" stroke-linecap="round"/>
+              <path d="M 45 55 C 45 10, 155 10, 155 95" fill="none" stroke="#0284c7" stroke-width="3" stroke-linecap="round" stroke-dasharray="4 2"/>
+              <!-- Akış Yönü Oku -->
+              <g transform="translate(100, 14)">
+                <circle cx="0" cy="0" r="7" fill="#16a34a" stroke="#182b4d" stroke-width="1.2"/>
+                <text x="0" y="2.5" text-anchor="middle" font-size="7" font-weight="900" fill="#ffffff">➔</text>
+              </g>
+              <!-- Seviye Rozeti -->
+              <g transform="translate(100, 68)">
+                <rect x="-24" y="-7" width="48" height="14" rx="4" fill="#ffffff" stroke="#182b4d" stroke-width="1.2"/>
+                <text x="0" y="3" text-anchor="middle" font-size="7.5" font-weight="900" fill="#dc2626" font-family="'Baloo 2'">Δh Farkı 💧</text>
+              </g>
+            </svg>
+            <span class="mt-2 px-3 py-0.5 bg-white/95 border-2 border-ink rounded-full text-[11px] font-black text-ink shadow-[0_2px_0_#182b4d]">
+              🌀 Kendiliğinden Akan Su
+            </span>
+          </div>
+        </div>
+
+        <!-- Kart İçerik -->
+        <div class="p-5 flex-1 flex flex-col justify-between gap-4">
+          <div>
+            <div class="flex items-center gap-2 mb-2">
+              <span class="text-2xl">🌀</span>
+              <h3 class="display text-xl text-ink">Basit Sifon Yapalım</h3>
+            </div>
+            
+            <p class="text-xs text-gray-700 leading-relaxed font-semibold mb-3">
+              Bir şeffaf hortum ve iki kap suyla pompasız su aktarabilir misin? Suyun yerçekimi, seviye farkı ve açık hava basıncı sayesinde engelleri aşıp kendiliğinden nasıl aktığını keşfet!
+            </p>
+
+            <!-- Kazanımlar -->
+            <div class="bg-emerald-50/70 p-2.5 rounded-xl border-2 border-ink/40 mb-3">
+              <span class="text-[10px] font-bold text-gray-500 uppercase tracking-wider block mb-1">Neler Öğreneceksin?</span>
+              <ul class="text-[11px] font-bold text-ink space-y-1">
+                <li class="flex items-center gap-1"><span>💧</span> Suyun seviyeler arasında kendiliğinden aktığını gözlemler.</li>
+                <li class="flex items-center gap-1"><span>⚖️</span> Yükseklik farkı (Δh) sıfırlandığında akışın durduğunu kavrar.</li>
+                <li class="flex items-center gap-1"><span>💨</span> Sıvı sütununa hava girdiğinde sifon etkisinin bozulduğunu test eder.</li>
+              </ul>
+            </div>
+
+            <!-- Etiketler -->
+            <div class="flex flex-wrap gap-1.5">
+              <span class="px-2 py-0.5 bg-emerald-100 text-emerald-800 text-[10px] font-bold rounded-lg border border-ink">Sifon İlkesi</span>
+              <span class="px-2 py-0.5 bg-sky-100 text-sky-800 text-[10px] font-bold rounded-lg border border-ink">Seviye Farkı (Δh)</span>
+              <span class="px-2 py-0.5 bg-amber-100 text-amber-800 text-[10px] font-bold rounded-lg border border-ink">Açık Hava Basıncı</span>
+            </div>
+          </div>
+
+          <!-- Aksiyon Butonları -->
+          <div class="flex items-center gap-2 pt-3 border-t-2 border-dashed border-gray-300">
+            <a href="basit-sifon.html" class="pushable flex-1 text-center display bg-emerald-500 hover:bg-emerald-600 text-white py-2.5 text-sm flex items-center justify-center gap-1.5 shadow-sm font-extrabold">
+              <span class="text-base">🌀</span> <span class="font-extrabold text-white text-sm">Deneye Başla</span>
+            </a>
+            <button onclick="openModalSimulation('basit-sifon.html', 'Basit Sifon Yapalım: Kendiliğinden Akan Su')" class="pushable bg-white hover:bg-gray-100 px-3 py-2.5 text-ink font-bold text-xs" title="Sayfadan ayrılmadan aç">
+              <span>🖥️</span> <span>Hızlı</span>
+            </button>
+          </div>
+        </div>
+
+      </article>
+
     </div>
 
   </section>
@@ -2234,6 +2334,8 @@
       <a href="bardaktaki-su-dokulmuyor.html" class="hover:text-ink hover:underline">Bardaktaki Su Dökülmüyor</a>
       <span>·</span>
       <a href="emme-basma-tulumba.html" class="hover:text-ink hover:underline">Emme-Basma Tulumba Modeli</a>
+      <span>·</span>
+      <a href="basit-sifon.html" class="hover:text-ink hover:underline">Basit Sifon Yapalım</a>
     </div>
   </footer>
 
